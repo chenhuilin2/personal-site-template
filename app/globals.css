@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   设计变量 —— 颜色取值直接对齐 jtchen.io 的实现
+   亮色：bg #fff / 主文字 #262626 / 次文字 #464646 / 强调 #a00000
+   暗色：bg #111 / 主文字 #e9e9e9 / 次文字 #d8d8d8 / 强调 #3aa8fd
+   改主题只需要改这一段，全站跟着变。
+   ============================================================ */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-sec: #eeeeee;
+  --color-fg: #262626;
+  --color-fg-sec: #464646;
+  --color-fg-trd: #808080;
+  --color-fg-text: #000000;
+  --color-special: #a00000;
+  --color-special-sec: #0058a0;
+
+  /* 第一顺位是原站用的 Neue Montreal，本机装了就直接生效；
+     没装则回退到构建时自托管的 Inter，再回退系统字体。 */
+  --font-sans: "Neue Montreal", var(--font-inter), Helvetica, Arial,
+    "Hiragino Sans", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  --font-mono: "Neue Montreal Mono", var(--font-plex-mono), ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+  /* 中文名用楷体衬线，和英文名拉开质感差异（原站同款做法） */
+  --font-kai: "Times New Roman", "STKaiti", "Kaiti SC", "FZKai-Z03", 楷体,
+    "KaiTi", serif;
+
+  --transition-normal: all 0.3s ease;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111111;
+    --color-bg-sec: #464646;
+    --color-fg: #e9e9e9;
+    --color-fg-sec: #d8d8d8;
+    --color-fg-trd: #999999;
+    --color-fg-text: #eeeeee;
+    --color-special: #e9e9e9;
+    --color-special-sec: #3aa8fd;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    line-height: 1.35;
+  }
+}
+
+@layer components {
+  /* 全站统一栅格：1080px 上限 + 24px 内边距 */
+  .container-content {
+    width: 100%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* 元信息小字：venue、年份、链接组，一律等宽字体 */
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--color-fg-trd);
+  }
+
+  /* 下划线式链接，无边框无背景 —— 原站全套链接都是这个形态 */
+  .link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: var(--transition-normal);
+  }
+
+  .link:hover {
+    color: var(--color-special-sec);
+  }
+
+  .link-plain {
+    transition: var(--transition-normal);
+  }
+
+  .link-plain:hover {
+    color: var(--color-special-sec);
+  }
+}
+
+/* 导航 logo 反色块里那个 “/” 和当前路径的展开动画 */
+.transition-normal {
+  transition: var(--transition-normal);
+}

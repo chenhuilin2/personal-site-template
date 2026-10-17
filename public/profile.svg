@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="Placeholder portrait">
+  <rect width="240" height="240" fill="#dcdcdc"/>
+  <g stroke="#bfbfbf" stroke-width="1">
+    <path d="M0 60h240M0 120h240M0 180h240M60 0v240M120 0v240M180 0v240"/>
+  </g>
+  <circle cx="120" cy="98" r="34" fill="#a8a8a8"/>
+  <path d="M46 240c0-41 33-74 74-74s74 33 74 74z" fill="#a8a8a8"/>
+  <text x="120" y="106" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#f2f2f2" text-anchor="middle">YN</text>
+  <text x="120" y="224" font-family="Menlo, Consolas, monospace" font-size="11" fill="#767676" text-anchor="middle">replace me</text>
+</svg>
